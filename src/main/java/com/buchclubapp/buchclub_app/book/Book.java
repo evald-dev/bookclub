@@ -4,20 +4,20 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.stereotype.Component;
 
+
 @Setter
 @Getter
-@Builder
-@NoArgsConstructor
+@RequiredArgsConstructor
 @AllArgsConstructor
-
 @Component
 @Entity
+@Builder
 @Table(name = "books")
 public class Book {
-    @Id
-    @GeneratedValue
-    private Long id;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private Long coverId;
 

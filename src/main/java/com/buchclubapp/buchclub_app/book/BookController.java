@@ -2,11 +2,10 @@ package com.buchclubapp.buchclub_app.book;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
-import reactor.core.publisher.Mono;
 
-import java.io.FileNotFoundException;
+import org.springframework.web.bind.annotation.*;
+
+
 import java.util.List;
 
 @RestController
@@ -18,12 +17,12 @@ public class BookController {
 
     @GetMapping("/books")
     List<Book> all(){
-        return bookService.all();
+        return bookService.getAllBooks();
     }
 
     @PostMapping("/book")
     Book newBook(@RequestBody Book newBook){
-        return bookService.newBook(newBook);
+        return bookService.addBook(newBook);
     }
 
     @PutMapping("/book/{id}")

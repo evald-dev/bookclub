@@ -14,12 +14,12 @@ public class BookService {
     BookRepository bookRepository;
 
 
-    List<Book> all(){
+    List<Book> getAllBooks(){
         return bookRepository.findAll();
     }
 
 
-    Book newBook(Book newBook){
+    public Book addBook(Book newBook){
         return bookRepository.save(newBook);
     }
 
