@@ -27,4 +27,7 @@ public class Book {
 
     private Integer publishYear;
 
+    @Column(name = "club_id")
+    private Long clubId;
+
 }

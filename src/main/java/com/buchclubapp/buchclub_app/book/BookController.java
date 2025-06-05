@@ -2,9 +2,7 @@ package com.buchclubapp.buchclub_app.book;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.web.bind.annotation.*;
-
 
 import java.util.List;
 
@@ -13,16 +11,19 @@ public class BookController {
     @Autowired
     BookService bookService;
 
-
-
-    @GetMapping("/books")
-    List<Book> all(){
-        return bookService.getAllBooks();
-    }
-
     @PostMapping("/book")
     Book newBook(@RequestBody Book newBook){
         return bookService.addBook(newBook);
+    }
+
+    @GetMapping("/book/{id}")
+    Book findBookById(@PathVariable Long id) {
+        return  bookService.findBookById(id);
+    }
+
+    @GetMapping("/book/club/{id}")
+    List<Book> findBooksByClubId(@PathVariable Long clUbId){
+        return bookService.findBooksByClubId(clUbId);
     }
 
     @PutMapping("/book/{id}")
