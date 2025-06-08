@@ -19,7 +19,7 @@ public class ClubService {
         return modelMapper.map(clubDto, Club.class);
     }
 
-    public Club getClubById(Long id){
+    public Club findClubById(Long id){
         return clubRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Club not found with id:" + id));
     }
@@ -28,7 +28,13 @@ public class ClubService {
        return clubRepository.save(newClub);
     }
 
-    Club editClub(ClubDto newClubDto, Long id) {
+//    public Club addClubMember(@PathVariable Long clubId, @PathVariable Long memberId){
+//        Club club = clubRepository.findById(clubId).orElseThrow(() -> new EntityNotFoundException("Club not found with id" + clubId));
+//
+//        return clubRepository.
+//    }
+
+    public Club editClub(ClubDto newClubDto, Long id) {
 
 
         return clubRepository.findById(id)

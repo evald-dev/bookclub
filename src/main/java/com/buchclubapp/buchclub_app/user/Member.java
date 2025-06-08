@@ -10,10 +10,10 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 @AllArgsConstructor
 @Component
-@Entity
 @Builder
-@Table(name = "clubs")
-public class User {
+@Table(name = "users")
+@Entity
+public class Member {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

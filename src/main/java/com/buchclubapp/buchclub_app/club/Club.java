@@ -1,11 +1,10 @@
 package com.buchclubapp.buchclub_app.club;
 
+import com.buchclubapp.buchclub_app.user.Member;
 import jakarta.persistence.*;
 import lombok.*;
-import org.apache.catalina.User;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
 import java.util.Set;
 
 @Setter
@@ -13,9 +12,9 @@ import java.util.Set;
 @RequiredArgsConstructor
 @AllArgsConstructor
 @Component
-@Entity
 @Builder
 @Table(name = "clubs")
+@Entity
 public class Club {
 
     @Id
@@ -25,5 +24,5 @@ public class Club {
     private String name;
 
     @OneToMany(mappedBy ="club")
-    private Set<User> members;
+    private Set<Member> members;
 }

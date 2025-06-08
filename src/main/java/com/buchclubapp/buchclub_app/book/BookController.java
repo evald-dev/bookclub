@@ -12,7 +12,7 @@ public class BookController {
     BookService bookService;
 
     @PostMapping("/book")
-    Book newBook(@RequestBody Book newBook){
+    Book addBook(@RequestBody Book newBook){
         return bookService.addBook(newBook);
     }
 
@@ -21,7 +21,7 @@ public class BookController {
         return  bookService.findBookById(id);
     }
 
-    @GetMapping("/{clubId/book}")
+    @GetMapping("/{clubId}/book")
     List<Book> findBooksByClubId(@PathVariable Long clUbId){
         return bookService.findBooksByClubId(clUbId);
     }
