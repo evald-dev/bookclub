@@ -21,7 +21,7 @@ public class BookController {
         return  bookService.findBookById(id);
     }
 
-    @GetMapping("/book/club/{id}")
+    @GetMapping("/{clubId/book}")
     List<Book> findBooksByClubId(@PathVariable Long clUbId){
         return bookService.findBooksByClubId(clUbId);
     }
