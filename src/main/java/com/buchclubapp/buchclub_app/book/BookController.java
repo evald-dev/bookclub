@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 public class BookController {
     @Autowired
@@ -22,8 +23,8 @@ public class BookController {
     }
 
     @GetMapping("/{clubId}/book")
-    List<Book> findBooksByClubId(@PathVariable Long clUbId){
-        return bookService.findBooksByClubId(clUbId);
+    List<Book> findBooksByClubId(@PathVariable Long clubId){
+        return bookService.findBooksByClubId(clubId);
     }
 
     @PutMapping("/book/{id}")
