@@ -3,6 +3,7 @@ package com.buchclubapp.buchclub_app.user;
 import com.buchclubapp.buchclub_app.club.Club;
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import org.springframework.stereotype.Component;
 
 @Setter
@@ -11,8 +12,9 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 @Component
 @Builder
-@Table(name = "users")
+@Table(name = "members")
 @Entity
+@EntityListeners(AuditingEntityListener.class)
 public class Member {
 
     @Id
@@ -26,9 +28,10 @@ public class Member {
 
     private String password;
 
-    private String role;
+
 
     @ManyToOne
     @JoinColumn(name="club_id")
     private Club club;
+
 }

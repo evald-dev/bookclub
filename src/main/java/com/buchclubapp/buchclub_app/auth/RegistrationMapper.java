@@ -1,5 +1,6 @@
 package com.buchclubapp.buchclub_app.auth;
 
+
 import com.buchclubapp.buchclub_app.user.Member;
 import org.springframework.stereotype.Component;
 
@@ -19,6 +20,6 @@ public class RegistrationMapper {
 
     public RegistrationResponseDto registrationResponseDto(final Member member){
         return new RegistrationResponseDto(
-                member.getEmail(), member.getUsername());
+                member.getUsername(), member.getEmail());
     }
 }

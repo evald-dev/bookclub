@@ -18,7 +18,7 @@ public class RegistrationController {
     private final RegistrationMapper registrationMapper;
 
     @PostMapping("/register")
-    public ResponseEntity<RegistrationResponseDto> registerUser(@Valid @RequestBody final RegistrationRequestDto registrationDto) {
+    public ResponseEntity<RegistrationResponseDto> registerMember(@RequestBody RegistrationRequestDto registrationDto) {
 
         final var registeredMember = registrationService.registerMember(registrationDto);
 

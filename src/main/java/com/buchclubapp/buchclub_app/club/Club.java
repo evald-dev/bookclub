@@ -1,5 +1,6 @@
 package com.buchclubapp.buchclub_app.club;
 
+
 import com.buchclubapp.buchclub_app.user.Member;
 import jakarta.persistence.*;
 import lombok.*;

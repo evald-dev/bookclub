@@ -1,10 +1,11 @@
 package com.buchclubapp.buchclub_app.club;
 
+import com.buchclubapp.buchclub_app.user.Member;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.apache.catalina.User;
+
 
 import java.util.List;
 
@@ -14,5 +15,5 @@ import java.util.List;
 @Builder
 public class ClubDto {
     private String name;
-    private List<User> members;
+    private List<Member> members;
 }
