@@ -1,11 +1,18 @@
 package com.buchclubapp.buchclub_app.book;
 
+import com.buchclubapp.buchclub_app.user.Member;
+import com.buchclubapp.buchclub_app.user.MemberRepository;
+import com.buchclubapp.buchclub_app.user.MemberService;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,6 +21,9 @@ public class BookService {
 
     @Autowired
     BookRepository bookRepository;
+
+    @Autowired
+    MemberRepository memberRepository;
 
     public Book addBook(Book newBook){
         return bookRepository.save(newBook);
@@ -41,7 +51,17 @@ public class BookService {
     }
 
     public List<Book> findBooksByClubId(Long clubId){
-        return bookRepository.findAllByClubId(clubId);
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentUsername = authentication.getName();
+        Member member = memberRepository.findByUsername(currentUsername)
+                .orElseThrow(() -> new EntityNotFoundException("Member not found with name " + currentUsername ));
+        if(member.getClub().getId() != null && member.getClub().getId().equals(clubId)) {
+            return bookRepository.findAllByClubId(clubId);
+
+        }else {
+            return Collections.emptyList() ;
+        }
     }
 
     private BookDto convertToBookDto(Book unconvertedBook){

@@ -1,4 +1,4 @@
-package com.buchclubapp.buchclub_app.member;
+package com.buchclubapp.buchclub_app.user;
 
 import com.buchclubapp.buchclub_app.user.Member;
 import com.buchclubapp.buchclub_app.user.MemberMapper;
@@ -47,6 +47,11 @@ public class MemberController {
     @GetMapping("/member/username/{username}")
     public Member getmemberByMembername(@PathVariable String username){
         return memberService.findMemberByUsername(username);
+    }
+
+    @PostMapping("/member/club/{clubId}/{memberId}")
+    public Member assignToClub(@PathVariable Long clubId, @PathVariable Long memberId){
+        return memberService.assignClubToMember(memberId,clubId);
     }
 }
 

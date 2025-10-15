@@ -1,7 +1,12 @@
 package com.buchclubapp.buchclub_app.book;
 
 
+import com.buchclubapp.buchclub_app.user.Member;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,6 +29,8 @@ public class BookController {
 
     @GetMapping("/{clubId}/book")
     List<Book> findBooksByClubId(@PathVariable Long clubId){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
         return bookService.findBooksByClubId(clubId);
     }
 

@@ -26,4 +26,13 @@ public class Club {
 
     @OneToMany(mappedBy ="club")
     private Set<Member> members;
+
+    public void addMember(Member member) {
+        // Falls das Member bereits einem anderen Club zugewiesen war, dort entfernen
+
+            this.members.add(member);
+            member.setClub(this);
+
+        // Setze den Club auf der Member-Seite
+    }
 }
