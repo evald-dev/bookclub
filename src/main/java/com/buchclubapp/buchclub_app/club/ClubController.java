@@ -1,5 +1,6 @@
 package com.buchclubapp.buchclub_app.club;
 
+import com.buchclubapp.buchclub_app.user.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,7 +10,7 @@ public class ClubController {
     ClubService clubService;
 
     @GetMapping("club/{id}")
-    public Club findClubById(@PathVariable Long id){
+    public Club findClubById(@PathVariable String id){
         return clubService.findClubById(id);
     }
 
@@ -19,12 +20,16 @@ public class ClubController {
     }
 
     @PutMapping("/club/{id}")
-    public Club editClub(@RequestBody ClubDto clubDto, @PathVariable Long id){
+    public Club editClub(@RequestBody ClubDto clubDto, @PathVariable String id){
         return clubService.editClub(clubDto, id);
     }
 
+    @PutMapping("/club/{id}/{memberId}")
+    public Member assignMemberToClub(@PathVariable String id, @PathVariable String memberId){
+        return clubService.assignMemberToClub(id,memberId);
+    }
     @DeleteMapping("/club/{id}")
-    public void deleteClub(@PathVariable Long id){
+    public void deleteClub(@PathVariable String id){
         clubService.deleteClub(id);
     }
 

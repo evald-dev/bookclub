@@ -14,8 +14,8 @@
 //public class CustomUserDetails extends User {
 //
 //    // Getters for your custom fields
-//    private Long id; // The member's actual database ID
-//    private Long clubId; // The member's club ID
+//    private String id; // The member's actual database ID
+//    private String clubId; // The member's club ID
 //    private String username;
 //    private String password;
 //    // You can store a reference to the actual Member object if you need it later

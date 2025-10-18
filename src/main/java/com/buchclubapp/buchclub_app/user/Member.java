@@ -1,31 +1,27 @@
 package com.buchclubapp.buchclub_app.user;
-
 import com.buchclubapp.buchclub_app.club.Club;
-import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.stereotype.Component;
-
 import java.util.Collection;
 import java.util.List;
+import org.springframework.data.mongodb.core.index.Indexed;
 
 @Setter
 @Getter
 @RequiredArgsConstructor
 @AllArgsConstructor
 @Builder
-@Table(name = "members")
-@Entity
-@EntityListeners(AuditingEntityListener.class)
+@Document(collection = "members")
 public class Member implements UserDetails {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id;
 
-    @Column(unique = true, nullable = false)
+    @Indexed(unique = true)
     private String username;
 
     private String email;
@@ -34,8 +30,7 @@ public class Member implements UserDetails {
 
 
     // Ein Getter für den Club, um im PreAuthorize Ausdruck darauf zugreifen zu können
-    @ManyToOne
-    @JoinColumn(name="club_id")
+    @DBRef
     private Club club;
 
     @Override

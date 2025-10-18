@@ -1,8 +1,12 @@
 package com.buchclubapp.buchclub_app.book;
-
-import jakarta.persistence.*;
+import com.buchclubapp.buchclub_app.club.Club;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 import lombok.*;
 import org.springframework.stereotype.Component;
+
+import java.lang.annotation.Documented;
 
 
 @Setter
@@ -10,16 +14,14 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 @AllArgsConstructor
 @Component
-@Entity
 @Builder
-@Table(name = "books")
+@Document(collection = "books")
 public class Book {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id;
 
-    private Long coverId;
+    private String coverId;
 
     private String title;
 
@@ -27,7 +29,7 @@ public class Book {
 
     private Integer publishYear;
 
-    @Column(name = "club_id")
-    private Long clubId;
+    @DBRef
+    private Club club;
 
 }

@@ -1,9 +1,10 @@
 package com.buchclubapp.buchclub_app.book;
 
+import com.buchclubapp.buchclub_app.club.Club;
+import com.buchclubapp.buchclub_app.club.ClubRepository;
 import com.buchclubapp.buchclub_app.user.Member;
 import com.buchclubapp.buchclub_app.user.MemberRepository;
 import com.buchclubapp.buchclub_app.user.MemberService;
-import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -11,10 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.reactive.function.client.WebClient;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class BookService {
@@ -23,14 +21,22 @@ public class BookService {
     BookRepository bookRepository;
 
     @Autowired
+    ClubRepository clubRepository;
+
+    @Autowired
     MemberRepository memberRepository;
 
-    public Book addBook(Book newBook){
+    public Book addBook(Book newBook,String clubId){
+
+        Club bookClub = clubRepository.findById(clubId).orElseThrow(()-> new NoSuchElementException("Club not found with id"+clubId));
+
+        newBook.setClub(bookClub);
+
         return bookRepository.save(newBook);
     }
 
 
-    Book editBook(Book newBook,Long id) {
+    Book editBook(Book newBook,String id) {
 
         return bookRepository.findById(id)
                 .map(book -> {
@@ -44,18 +50,18 @@ public class BookService {
                 });
     }
 
-    public Book findBookById(Long id){
+    public Book findBookById(String id){
 
         return bookRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Book not found with id:" + id));
+                .orElseThrow(() -> new NoSuchElementException("Book not found with id:"+id));
     }
 
-    public List<Book> findBooksByClubId(Long clubId){
+    public List<Book> findBooksByClubId(String clubId){
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentUsername = authentication.getName();
         Member member = memberRepository.findByUsername(currentUsername)
-                .orElseThrow(() -> new EntityNotFoundException("Member not found with name " + currentUsername ));
+                .orElseThrow(() -> new NoSuchElementException("Member not found with name " + currentUsername ));
         if(member.getClub().getId() != null && member.getClub().getId().equals(clubId)) {
             return bookRepository.findAllByClubId(clubId);
 
@@ -74,7 +80,7 @@ public class BookService {
                 .build();
     }
 
-    void deleteBook(Long id) {
+    void deleteBook(String id) {
         bookRepository.deleteById(id);
     }
 

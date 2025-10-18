@@ -18,7 +18,7 @@ public class MemberController {
     MemberMapper memberMapper;
 
     @GetMapping("/member/{id}")
-    public Member getMemberById(@PathVariable Long id){
+    public Member getMemberById(@PathVariable String id){
         return memberService.findmemberById(id);
     }
 
@@ -28,12 +28,12 @@ public class MemberController {
     }
 
     @PutMapping("/member/{id}")
-    public Member editmember(@RequestBody Member editedmember, @PathVariable Long id){
+    public Member editmember(@RequestBody Member editedmember, @PathVariable String id){
         return memberService.editmember(editedmember,id);
     }
 
     @DeleteMapping("/member/id/{id}")
-    public void deletemember(@PathVariable Long id){
+    public void deletemember(@PathVariable String id){
         memberService.deletemember(id);
     }
 
@@ -47,11 +47,6 @@ public class MemberController {
     @GetMapping("/member/username/{username}")
     public Member getmemberByMembername(@PathVariable String username){
         return memberService.findMemberByUsername(username);
-    }
-
-    @PostMapping("/member/club/{clubId}/{memberId}")
-    public Member assignToClub(@PathVariable Long clubId, @PathVariable Long memberId){
-        return memberService.assignClubToMember(memberId,clubId);
     }
 }
 

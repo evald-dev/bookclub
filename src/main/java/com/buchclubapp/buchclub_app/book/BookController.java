@@ -18,30 +18,30 @@ public class BookController {
     BookService bookService;
 
     @PostMapping("/book")
-    Book addBook(@RequestBody Book newBook){
-        return bookService.addBook(newBook);
+    Book addBook(@RequestBody Book newBook,@PathVariable String clubId){
+        return bookService.addBook(newBook, clubId);
     }
 
     @GetMapping("/book/{id}")
-    Book findBookById(@PathVariable Long id) {
+    Book findBookById(@PathVariable String id) {
         return  bookService.findBookById(id);
     }
 
     @GetMapping("/{clubId}/book")
-    List<Book> findBooksByClubId(@PathVariable Long clubId){
+    List<Book> findBooksByClubId(@PathVariable String clubId){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
         return bookService.findBooksByClubId(clubId);
     }
 
     @PutMapping("/book/{id}")
-    Book editBook(@RequestBody Book newBook, @PathVariable Long id) {
+    Book editBook(@RequestBody Book newBook, @PathVariable String id) {
 
         return bookService.editBook(newBook,id);
     }
 
     @DeleteMapping("/book/{id}")
-    void deleteBook(@PathVariable Long id) {
+    void deleteBook(@PathVariable String id) {
         bookService.deleteBook(id);
     }
 
