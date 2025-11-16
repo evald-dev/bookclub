@@ -58,9 +58,9 @@ public class MemberService {
     }
 
     @Transactional
-    public Member setTheme(final String id, final String newTheme) {
-        Member member = memberRepository.findById(id)
-                .orElseThrow(() -> new NoSuchElementException("Member not found with id"+id));
+    public Member setTheme(final String username, final String newTheme) {
+        Member member = memberRepository.findByUsername(username)
+                .orElseThrow(() -> new NoSuchElementException("Member not found with username"+username));
         member.setTheme(newTheme);
         return memberRepository.save(member);
     }
