@@ -45,7 +45,7 @@ public class MemberController {
     }
 
     @PostMapping("/member/theme/{theme}")
-    public Member setMemberTheme(@RequestBody String memberId,String theme){
+    public Member setMemberTheme(@RequestBody String memberId,@PathVariable String theme){
         return memberService.setTheme(memberId,theme);
     }
 }
