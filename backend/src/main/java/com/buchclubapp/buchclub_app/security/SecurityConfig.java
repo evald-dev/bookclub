@@ -114,7 +114,7 @@ public class SecurityConfig {
         CorsConfiguration configuration = new CorsConfiguration();
 
         // (WICHTIG) Ersetze dies mit deiner Vue.js Frontend-URL
-        configuration.setAllowedOrigins(Arrays.asList("https://bookclub-448521902618.europe-west1.run.app"));
+        configuration.setAllowedOrigins(Arrays.asList("https://sweet-mandazi-4871f5.netlify.app"));
 
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
 

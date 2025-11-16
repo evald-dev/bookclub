@@ -11,7 +11,7 @@ public class WebConfig implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
         registry
                 .addMapping("/**")
-                .allowedOrigins("https://bookclub-448521902618.europe-west1.run.app") // Die URL deines Vue-Frontends
+                .allowedOrigins("https://sweet-mandazi-4871f5.netlify.app/") // Die URL deines Vue-Frontends
 
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
