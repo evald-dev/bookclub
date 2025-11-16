@@ -6,13 +6,7 @@ import lombok.AllArgsConstructor;
 public class MemberRegisterDto {
 
     private String username;
-
     private String email;
-
     private String password;
-
-    private String theme;
-
-
 
 }

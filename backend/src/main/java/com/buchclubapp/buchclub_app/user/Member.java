@@ -30,8 +30,6 @@ public class Member implements UserDetails {
 
     private String password;
 
-    private String theme;
-
     private String profilePicUrl;
 
 

@@ -29,7 +29,6 @@ public class RegistrationService {
         Member member = new Member();
         member.setUsername(request.username());
         member.setEmail(request.email());
-        member.setTheme(request.theme());
         member.setPassword(passwordEncoder.encode(request.password()));
 
         return memberRepository.save(member);
