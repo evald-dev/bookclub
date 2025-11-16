@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import {useAuthStore} from '../stores/auth.js';
 import axios from 'axios'
 
-const API_URL = 'http://localhost:8080'
+const API_URL = 'https://bookclub-6vy2.onrender.com'
 
 // --- Refs für die Formulare ---
 const username = ref('')

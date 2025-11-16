@@ -4,7 +4,7 @@ import { ref } from 'vue'
 import axios from 'axios'
 
 // Die Basis-URL deines Spring Boot-Backends
-const API_URL = 'http://localhost:8080'
+const API_URL = 'https://bookclub-6vy2.onrender.com'
 
 // --- Refs für die Formulare ---
 const newUsername = ref('')
