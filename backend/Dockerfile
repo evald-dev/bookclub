@@ -1,7 +1,7 @@
 # STAGE 1: Bauen der Anwendung mit Maven
 # Wir verwenden ein offizielles Eclipse Temurin Image mit JDK 17
 # Ändere "17" auf "21", falls du Java 21 verwendest.
-FROM amazoncorretto:21-jdk-jammy AS builder
+FROM eclipse-temurin:21-jdk-jammy AS builder
 
 # Setze das Arbeitsverzeichnis im Container
 WORKDIR /app
@@ -27,7 +27,7 @@ RUN ./mvnw package -DskipTests
 # ---
 # STAGE 2: Erstellen des finalen, schlanken Images
 # Wir verwenden das JRE (Java Runtime Environment), da wir das JDK nicht mehr brauchen
-FROM amazoncorretto:21-jre-jammy
+FROM eclipse-temurin:21-jre-jammy
 
 WORKDIR /app
 
