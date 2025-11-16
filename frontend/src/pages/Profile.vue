@@ -6,7 +6,7 @@ import { ref, computed } from "vue";
 
 // Reaktive Daten für das Benutzerprofil
 const user = ref({
-  name: authStore.currentUser.username,
+  name: authStore.username,
   activeSince: "March 2024",
   totalBooks: 28,
   goal: 30,
@@ -68,7 +68,7 @@ const meetings = ref([
 
             <div class="w-full">
               <div class="flex items-center gap-2 mb-1">
-                <h1 class="text-3xl font-bold">{{ user.name}}</h1>
+                <h1 class="text-3xl font-bold">{{ authStore.currentUser}}</h1>
                 <PencilIcon
                   class="w-6 h-6 hover:text-stone-800 cursor-pointer"
                 />

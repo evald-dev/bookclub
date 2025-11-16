@@ -2,6 +2,8 @@
 import { ref } from 'vue'
 import {useAuthStore} from '../stores/auth.js';
 import axios from 'axios'
+import { useNavigation } from "../useNavigation.js";
+const { goToHome, goToLogin, goToOverview, goToProfile, goToAddClub } = useNavigation();
 
 const API_URL = 'https://bookclub-6vy2.onrender.com'
 
