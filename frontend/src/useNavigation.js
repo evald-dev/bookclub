@@ -29,12 +29,18 @@ const goToProfile = () => {
     router.push('/addclub')
   }
 
+   const goToSettings = () => {
+    router.push('/settings')
+  }
+
   // 4. Gib die Funktionen zurück, die deine Komponenten brauchen
   return {
     goToHome,
     goToLogin,
     goToOverview,
     goToProfile,
-    goToAddClub
+    goToAddClub,
+    goToSettings
+
   }
 }

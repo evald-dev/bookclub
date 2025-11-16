@@ -2,7 +2,7 @@
 import { useNavigation } from "./useNavigation.js";
 import { useAuthStore } from "./stores/auth";
 import { ref, watchEffect } from "vue";
-const { goToHome, goToLogin, goToOverview, goToProfile, goToAddClub } = useNavigation();
+const { goToHome, goToLogin, goToOverview, goToProfile, goToAddClub, goToSettings } = useNavigation();
 const authStore = useAuthStore();
 import AllThemesList from "./components/AllThemesList.vue";
 import SideBarItem from "./components/SideBaerItem.vue";
@@ -12,6 +12,7 @@ import ProfileIcon from "./assets/icons/ProfileIcon.vue";
 import LogoutIcon from "./assets/icons/LogoutIcon.vue";
 import LoginIcon from "./assets/icons/LoginIcon.vue";
 import AddIcon from "./assets/icons/AddIcon.vue";
+import SettingIcon from "./assets/icons/SettingIcon.vue";
 
 const currentTheme = ref("retro");
 
@@ -88,8 +89,14 @@ watchEffect(() => {
                 </template>
               </SideBarItem>
             </li>
-          
-            <AllThemesList />
+
+            <li>
+              <SideBarItem label="Setting" @click="goToSettings">
+                <template #icon>
+                  <SettingIcon />
+                </template>
+              </SideBarItem>
+            </li>
           </ul>
 
           <!-- button to open/close drawer -->

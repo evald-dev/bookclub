@@ -30,6 +30,10 @@ public class Member implements UserDetails {
 
     private String password;
 
+    private String theme;
+
+    private String profilePicUrl;
+
 
     // Ein Getter für den Club, um im PreAuthorize Ausdruck darauf zugreifen zu können
     @DBRef

@@ -56,4 +56,13 @@ public class MemberService {
                 .orElseThrow(() -> new ResponseStatusException(GONE,
                         "The member account has been deleted or inactivated"));
     }
+
+    @Transactional
+    public Member setTheme(final String id, final String newTheme) {
+        Member member = memberRepository.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("Member not found with id"+id));
+        member.setTheme(newTheme);
+        return memberRepository.save(member);
+    }
 }
+

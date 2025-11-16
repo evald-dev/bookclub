@@ -4,7 +4,7 @@ import axios from 'axios'
 import { useAuthStore } from "../stores/auth";
 const authStore = useAuthStore();
 
-const API_URL = 'https://bookclub-6vy2.onrender.com'
+const API_URL = 'http://localhost:8080'
 
 console.log(authStore.token)
 

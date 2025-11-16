@@ -6,6 +6,7 @@ import Register from '../pages/Register.vue'
 import Overview from '../pages/Overview.vue'
 import Profile from '../pages/Profile.vue'
 import AddClub from '../pages/AddClub.vue'
+import Settings from '../pages/Settings.vue'
 
 const routes = [
   { path: '/', component: Home },
@@ -14,6 +15,7 @@ const routes = [
   { path: '/overview', component: Overview },
    { path: '/profile', component: Profile },
    { path: '/addclub', component: AddClub },
+   { path: '/settings', component: Settings }
 ]
 
 const router = createRouter({

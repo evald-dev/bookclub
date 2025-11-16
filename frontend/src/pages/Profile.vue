@@ -56,8 +56,8 @@ const meetings = ref([
             <div class="relative flex-shrink-0">
               <img
                 class="w-24 h-24 rounded-full object-cover border-4 border-white shadow-lg"
-                src="https://images.unsplash.com/photo-1522163182402-d31518864902?w=100&h=100&fit=crop&crop=faces"
-                alt="Profilbild von Boris Razor"
+                src="https://images.unsplash.com/photo-1616543551305-9153b3898060?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Profilbild"
               />
               <span
                 class="absolute bottom-0 left-1/2 w-10 h-7 bg-yellow-400 text-yellow-900 text-sm font-bold flex items-center justify-center rounded-md transform -translate-x-1/4 translate-y-2 border-2 border-white shadow-sm"

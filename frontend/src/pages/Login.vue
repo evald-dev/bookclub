@@ -5,7 +5,7 @@ import axios from 'axios'
 import { useNavigation } from "../useNavigation.js";
 const { goToHome, goToLogin, goToOverview, goToProfile, goToAddClub } = useNavigation();
 
-const API_URL = 'https://bookclub-6vy2.onrender.com'
+const API_URL = 'https://bookclub-448521902618.europe-west1.run.app'
 
 // --- Refs für die Formulare ---
 const username = ref('')
@@ -35,6 +35,8 @@ async function login() {
     username.value = ''
     password.value = ''
     email.value = ''
+
+    goToProfile()
     
   } catch (e) {
     console.error('Fehler beim Erstellen:', e)
