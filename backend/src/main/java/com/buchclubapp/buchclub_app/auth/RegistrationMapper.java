@@ -20,6 +20,6 @@ public class RegistrationMapper {
 
     public RegistrationResponseDto registrationResponseDto(final Member member){
         return new RegistrationResponseDto(
-                member.getUsername(), member.getEmail());
+                member.getUsername(), member.getEmail(), member.getTheme());
     }
 }

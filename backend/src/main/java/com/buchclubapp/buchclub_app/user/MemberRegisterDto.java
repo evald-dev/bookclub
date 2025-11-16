@@ -11,6 +11,8 @@ public class MemberRegisterDto {
 
     private String password;
 
+    private String theme;
+
 
 
 }

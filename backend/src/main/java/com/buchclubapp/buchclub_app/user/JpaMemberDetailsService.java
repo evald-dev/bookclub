@@ -23,6 +23,7 @@ public class JpaMemberDetailsService implements UserDetailsService {
                         .username(username)
                         .password(user.getPassword())
                         .club(user.getClub())
+                        .theme(user.getTheme())
                         .build()
         ).orElseThrow(() -> new UsernameNotFoundException(
                 "User with username [%s] not found".formatted(username)));
